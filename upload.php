@@ -1,5 +1,5 @@
 <?php
-define("UPLOAD_DIR", "/home/s5/html/wp-content/plugins/store5/files/");
+define("UPLOAD_DIR", "/home/s5/html/wp-content/plugins/store5-order-grinder/files/");
 if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
     if ($myFile["error"] !== UPLOAD_ERR_OK) {
