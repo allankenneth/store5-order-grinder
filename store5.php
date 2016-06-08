@@ -149,7 +149,7 @@ function store5_options() {
 	<div style="float: left; margin: 1%; padding: 1%; width: 20%;">
 	<h1><?php echo $howmany ?> Orders</h1>
 	<p>You will need a "Transaction Journal.csv" spanning the dates: <?php echo $firstdate[0] . ' - ' . $lastdate[0] ?>.</p>
-	<form action="/wp-content/plugins/store5/upload.php" method="post" enctype="multipart/form-data" class="up"> 
+	<form action="/wp-content/plugins/store5-order-grinder/upload.php" method="post" enctype="multipart/form-data" class="up"> 
 		<div class="form-group">
 			<input type="file" name="myFile" id="myFile"> 
 			<button type="submit" class="btn btn-lg btn-warning btn-block" value="Upload">
