@@ -47,17 +47,10 @@ function store5_options() {
 	?>
 	<?php foreach($flip as $order) : ?>
 		<h1><?php echo $order['id'] ?>. <?php echo $order['14'] ?>  <?php echo $order['15'] ?></h1>
-		<?php 
-		if($order['16']) {
-			$bgcolor = '#999';
-		} else {
-			$bgcolor = '#FFF';
-		}
-		?>
 		<form action="/wp-content/plugins/store5/create.php" 
 			class="addorder" 
 			method="post" 
-			style="background: <?php echo $bgcolor ?>;margin-bottom:30px; padding: 20px;">
+			style="<?php if($order['16.1']) echo 'border: 1px dashed red;' ?> background: #FFF; margin-bottom:30px; padding: 20px;">
 		<input type="hidden" name="action" id="action" value="s5_new_order">
 		<input type="hidden" name="gf_entry_id" id="gf_entry_id" value="<?php echo $order['id'] ?>">
 		<div style="float: left; margin: 1%; padding: 1%; width: 46%;">
