@@ -46,6 +46,7 @@ function store5_options() {
 
 	?>
 	<?php foreach($flip as $order) : ?>
+	<?php //TODO add support for air shipping and the new HOLD UNTIL feature  ?>
 		<h1><?php echo $order['id'] ?>. <?php echo $order['14'] ?>  <?php echo $order['15'] ?></h1>
 		<form action="/wp-content/plugins/store5/create.php" 
 			class="addorder" 
