@@ -47,7 +47,6 @@ function store5_options() {
 
 	?>
 	<?php foreach($flip as $order) : ?>
-	<?php //TODO add support for air shipping and the new HOLD UNTIL feature  ?>
 		<h1><?php echo $order['id'] ?>. <?php echo $order['14'] ?>  <?php echo $order['15'] ?></h1>
 		<form action="/wp-content/plugins/store5/create.php" 
 			class="addorder" 
@@ -55,10 +54,21 @@ function store5_options() {
 			style="<?php if($order['16.1']) echo 'border: 1px dashed red;' ?> background: #FFF; margin-bottom:30px; padding: 20px;">
 		<input type="hidden" name="action" id="action" value="s5_new_order">
 		<input type="hidden" name="gf_entry_id" id="gf_entry_id" value="<?php echo $order['id'] ?>">
-		<div style="float: left; margin: 1%; padding: 1%; width: 46%;">
 		<?php $daydate = explode(' ', $order['date_created']) ?>
 		<h2>Date added: <?php echo $daydate[0] ?></h2>
 		Transaction ID: <input size="8" type="text" name="transid" id="transid" value="<?php echo $order["5"] ?>"><br>
+		
+
+
+
+		<?php if($order['17']): ?>
+		<p>Order being held until <?php echo $order['17'] ?>. <a href="#oid<?php echo $order['id'] ?>" class="showorder">Show Order</a></p>
+		<div class="hodor" id="oid<?php echo $order['id'] ?>">
+		<?php endif ?>
+		
+
+		<div style="float: left; margin: 1%; padding: 1%; width: 46%;">
+
 		<?php 
 		// We support having multiple transaction IDs because it frequently happens that people will come back later
 		// and add to their order. Here we detect if there are multiple transaction IDs and if there are
@@ -104,9 +114,21 @@ function store5_options() {
 			<hr>
 		<?php endforeach;?>
 		<?php else: ?>
+			<hr>
 			<p><strong>Could not find this transaction in the current journal. 
 				Please upload a new journal within the correct time period.</strong></p>
+			<hr>
 		<?php endif; ?>
+		<?php if($order['18.1']): ?>
+		<h3 style="text-transform: uppercase">Remove Prices</h3>
+		<hr>
+		<?php endif; ?>
+		<?php if($order['17']): ?>
+		<strong>Hold until: <?php echo $order['17'] ?></strong>
+		<hr>
+		<?php endif; ?>
+		Shipment Method: <strong><?php echo $order['9'] ?></strong>
+		<hr>
 		Notes: <br>
 		<textarea name="notes" cols="30" rows="5"><?php echo $order["4"] ?></textarea>
 		<br>
@@ -138,6 +160,11 @@ function store5_options() {
 		</div>
 		<div style="clear:both"></div>
 		<button class="btn btn-success">Process Order</button>
+		<?php if($order['17']): ?>
+		</div>
+		<div style="clear:both"></div>
+		<?php endif ?>
+
 	</form>
 	<?php endforeach; ?>
 	</div>
@@ -165,6 +192,7 @@ function store5_options() {
 	</div>
 
 <style>
+.hodor { display: none; }
 .strike { text-decoration: line-through }
 .qty { font-size: 22px; line-height: 22px; }
 </style>
@@ -192,6 +220,11 @@ function s5_new_order_javascript() { ?>
 		jQuery('.markpacked').click(function(e){
 			e.preventDefault();
 			jQuery(this).siblings('span').toggleClass('strike');
+		});
+		jQuery('.showorder').click(function(e){
+			e.preventDefault();
+			gogogo = $(this).attr('href');
+			$(gogogo).slideToggle();
 		});
 	});
 	</script> <?php
