@@ -62,6 +62,7 @@ function store5_options() {
 
 
 		<?php if($order['17']): ?>
+		<input type="hidden" name="helduntil" id="helduntil" value="<?php echo $order['17'] ?>">
 		<p>Order being held until <?php echo $order['17'] ?>. <a href="#oid<?php echo $order['id'] ?>" class="showorder">Show Order</a></p>
 		<div class="hodor" id="oid<?php echo $order['id'] ?>">
 		<?php endif ?>
@@ -292,7 +293,8 @@ function s5_new_order_callback() {
 		}
 	}
 	$noted = $_POST['notes'] . ' Colleague: ' . $_POST['colleague'] . ', Shipping charged: $' . $_POST['shipcharged'];
-	$noted .= ' Transactions ID: ' . $_POST['transid'];
+	$noted .= ' Transactions ID: ' . $_POST['transid'] . '<br>';
+	if($_POST['helduntil']) $noted .= 'HELD UNTIL: ' . $_POST['helduntil'];
 	$order->add_order_note($noted);
 	$order->set_address( $address, 'billing' );
 	$order->set_address( $address, 'shipping' );
@@ -338,7 +340,7 @@ function s5_new_order_callback() {
 	update_user_meta($newcust, 'shipping_email', $_POST['email']);
 	// FINALLY
 	// If we do the following payment_complete, then our order is locked and we can't edit
-	// it in any way. This is probably good, but until the bugs are worked out, I'm
+	// it in any way. This is probably good, but until the bugs are worked out (LOL), I'm
 	// just going to disable it and change statuses manually.
 	//
 	//$order->payment_complete();
