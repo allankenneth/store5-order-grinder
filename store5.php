@@ -99,8 +99,7 @@ function store5_options() {
 					id="item-<?php echo $item['sku'] ?>"
 					name="deets[]" 
 					value="<?php echo $item['qty'] . '||' . $item['sku'] ?>">
-				<a href="#" class="btn btn-sm removeitem">x</a>
-				<a href="#" class="btn btn-sm markpacked">packed</a>
+				<a href="#" class="button markpacked">packed</a>
 				<span>
 				<span class="qty"><?php echo $item['qty'] ?></span> 
 					x
@@ -108,6 +107,7 @@ function store5_options() {
 					-
 				<?php echo $item['desc'] ?>
 				</span>
+				<a href="#" class="button removeitem">x</a>
 			</li>
 			<?php endforeach; ?>
 			</ul>
@@ -192,6 +192,14 @@ function store5_options() {
 	</div>
 
 <style>
+.button {
+	background: #FFF;
+	border: 1px solid #333;
+	border-radius: 2px;	
+	display: inline-block;
+	font-size: 8px;
+	padding: 3px;
+}
 .hodor { display: none; }
 .strike { text-decoration: line-through }
 .qty { font-size: 22px; line-height: 22px; }
