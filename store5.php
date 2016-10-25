@@ -338,6 +338,10 @@ function s5_new_order_callback() {
 	update_user_meta($newcust, 'shipping_country', $_POST['country']);
 	update_user_meta($newcust, 'shipping_phone', $_POST['phone']);
 	update_user_meta($newcust, 'shipping_email', $_POST['email']);
+	if($_POST['helduntil']) {
+		$holdnote = 'HELD UNTIL: ' . $_POST['helduntil'];
+		$order->update_status('on-hold', $holdnote);
+	}
 	// FINALLY
 	// If we do the following payment_complete, then our order is locked and we can't edit
 	// it in any way. This is probably good, but until the bugs are worked out (LOL), I'm
