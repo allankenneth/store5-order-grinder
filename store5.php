@@ -26,6 +26,27 @@ function store5_menu() {
 		'store5',
 		'store5_options'
 	);
+	add_submenu_page(
+		'woocommerce',
+		__( 'Winner', 's5-order-grinder' ),
+		__( 'Winner', 's5-order-grinder' ),
+		'manage_woocommerce',
+		'winner',
+		'store5_winner'
+	);
+
+
+}
+
+function store5_winner() { ?>
+        <?php $form_id = '1'; ?>
+        <?php $search_criteria['field_filters'][] = array( 'key' => '19.1', 'value' => 'Yes' ); ?>
+	<?php $paging = array( 'offset' => 0, 'page_size' => 100 ); ?>
+        <?php $entry = GFAPI::get_entries( $form_id, $search_criteriai, null, $paging ); ?>
+        <?php foreach($entry as $winner): ?>
+        <?php echo $winner['19.1'] . ' - ' . $winner['14'] . ' ' . $winner['15'] . ' - ' . $winner['5'];  ?><br>
+        <?php endforeach; ?>
+<?php
 }
 function store5_options() {
 	//if ( !current_user_can( 'manage_options' ) )  {
@@ -47,7 +68,7 @@ function store5_options() {
 
 	?>
 	<?php foreach($flip as $order) : ?>
-		<h1><?php echo $order['id'] ?>. <?php echo $order['14'] ?>  <?php echo $order['15'] ?></h1>
+		<h1><?php echo $order['id'] ?>. <?php echo $order['20'] ?>  <?php echo $order['15'] ?></h1>
 		<form action="/wp-content/plugins/store5/create.php" 
 			class="addorder" 
 			method="post" 
@@ -55,8 +76,9 @@ function store5_options() {
 		<input type="hidden" name="action" id="action" value="s5_new_order">
 		<input type="hidden" name="gf_entry_id" id="gf_entry_id" value="<?php echo $order['id'] ?>">
 		<?php $daydate = explode(' ', $order['date_created']) ?>
-		<h2>Date added: <?php echo $daydate[0] ?></h2>
+		<h2>Date added: <?php echo $daydate[0] ?> [<a href="https://store5.ca/wp-admin/admin.php?page=gf_entries&view=entry&id=1&lid=<?php echo $order['id'] ?>&order=ASC&filter&paged=1&pos=0&field_id&operator">Edit</a>]</h2>
 		Transaction ID: <input size="8" type="text" name="transid" id="transid" value="<?php echo $order["5"] ?>"><br>
+		
 		
 
 
@@ -137,7 +159,7 @@ function store5_options() {
 		</div>
 		<div style="float: left; margin: 1%; padding: 1%; width: 46%;">
 		<h3>Address</h3>
-		First Name: <input type="text" name="first_name" value="<?php echo $order["14"] ?>"><br>
+		First Name: <input type="text" name="first_name" value="<?php echo $order["20"] ?>"><br>
 		Last Name: <input type="text" name="last_name" value="<?php echo $order["15"] ?>"><br>
 		Company: <input type="text" name="company" value="<?php echo $order["12"] ?>"><br>
 		Address 1: <input type="text" name="address_1" value="<?php echo $order["2.1"] ?>"><br>
