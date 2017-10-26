@@ -162,19 +162,19 @@ function store5_options() {
 		First Name: <input type="text" name="first_name" value="<?php echo $order["20"] ?>"><br>
 		Last Name: <input type="text" name="last_name" value="<?php echo $order["15"] ?>"><br>
 		Company: <input type="text" name="company" value="<?php echo $order["12"] ?>"><br>
-		Address 1: <input type="text" name="address_1" value="<?php echo $order["2.1"] ?>"><br>
-		Address 2: <input type="text" name="address_2" value="<?php echo $order["2.2"] ?>"><br>
-		City: <input type="text" name="city" value="<?php echo $order["2.3"] ?>"><br>
-		State: <input size="8" type="text" name="state" value="<?php echo $order["2.4"] ?>"><br>
-		Code: <input type="text" name="code" value="<?php echo $order["2.5"] ?>"><br>
+		Address 1: <input type="text" name="address_1" value="<?php echo $order["21.1"] ?>"><br>
+		Address 2: <input type="text" name="address_2" value="<?php echo $order["21.2"] ?>"><br>
+		City: <input type="text" name="city" value="<?php echo $order["21.3"] ?>"><br>
+		State: <input size="8" type="text" name="state" value="<?php echo $order["21.4"] ?>"><br>
+		Code: <input type="text" name="code" value="<?php echo $order["21.5"] ?>"><br>
 		<?php 
 		// WTF GravityForms? Can't use a country code? 
-		if($order['2.6'] == 'United States') {
+		if($order['21.6'] == 'United States') {
 			$cunt = 'US';
-		} elseif($order['2.6'] == 'Canada') {
+		} elseif($order['21.6'] == 'Canada') {
 			$cunt = 'CA';
 		} else {
-			$cunt = $order['2.6'];
+			$cunt = $order['21.6'];
 		} 
 		?>
 		Country: <input type="text" name="country" value="<?php echo $cunt ?>"><br>
