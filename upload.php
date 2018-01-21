@@ -1,9 +1,12 @@
 <?php
+// What the actual fuck, Allan? This has been in production for years? 
+// GAPING FUCKING HOLE DUDE. NOT COOL.
+// TODO Fix this immediately
 define("UPLOAD_DIR", "/home/s5/html/wp-content/plugins/store5-order-grinder/files/");
 if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
     if ($myFile["error"] !== UPLOAD_ERR_OK) {
-        echo "<p>A fucking error occurred.</p>";
+        echo "<p>An error occurred.</p>";
         exit;
     }
 	// We're going to delete the existing transaction journal and 

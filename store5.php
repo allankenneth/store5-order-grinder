@@ -202,7 +202,7 @@ function store5_options() {
 			</button>
 		</div>
 	</form>
-	<!--	<h3>Instructions</h3>
+	<h3>Instructions</h3>
 		<p>In Merchant Back Office, run a <strong>Transaction Journal</strong> report with the following parameters:</p>
 		<ul>
 			<li>Date Posted should be between the newest and oldest orders</li>
@@ -210,7 +210,7 @@ function store5_options() {
 			<li>Print Summary, Print Drawer Count &amp;Print Detail should all be checked</li>
 		</ul>
 		<p>When the report comes up, click the export button (very far upper-left). Change the file type to CSV and save it to your desktop.</p>
-		<p>Once that's done, come back here, click "Choose File;" locate and "Open" the newly exported "Transaction Journal.csv;" Then click the 'Upload &hellip;' button. </p>-->
+		<p>Once that's done, come back here, click "Choose File;" locate and "Open" the newly exported "Transaction Journal.csv;" Then click the 'Upload &hellip;' button. </p>
 
 	</div>
 
